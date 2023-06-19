@@ -12,7 +12,7 @@
 <form class="form-inline">
   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-  <button class="btn btn-primary ml-2">Register</button>
+  <router-link to="/register" class="btn btn-primary">Register</router-link>
 </form>
 </nav>
 

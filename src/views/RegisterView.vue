@@ -1,21 +1,24 @@
 <template>
-    <div class="container">
-      <h2>Registration Form</h2>
-      <form @submit.prevent="submitForm">
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" id="name" v-model="formData.name" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="email">Email:</label>
-          <input type="email" id="email" v-model="formData.email" class="form-control">
-        </div>
-        <div class="form-group">
-          <label for="password">Password:</label>
-          <input type="password" id="password" v-model="formData.password" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+   
+    <nav class="navbar navbar-light bg-light justify-content-between">
+      <a class="navbar-brand">Register</a>
+      <form class="form-inline">
+        <input class="form-control mr-sm-2" type="text" placeholder="Register" aria-label="Register">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</button>
       </form>
+    </nav>
+  
+    <div class="container2 text-center">
+      <table class="table table-bordered table-dark">
+        <thead>
+          <tr>
+            <th class="col-9">new register</th>
+            <th class="col-3">
+              <button class="btn btn-primary">Options</button>
+            </th>
+          </tr>
+        </thead>
+      </table>
     </div>
   </template>
   

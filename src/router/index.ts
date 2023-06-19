@@ -5,6 +5,7 @@ import CondutoresViewVue from '@/views/CondutoresView.vue'
 import VeiculoViewVue from '@/views/VeiculoView.vue'
 import ModeloViewVue from '@/views/ModeloView.vue'
 import MovimentacaoViewVue from '@/views/MovimentacaoView.vue'
+import RegisterViewVue from '@/views/RegisterView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -36,6 +37,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/movimentacao',
     name: 'movimentacao',
     component: MovimentacaoViewVue
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: RegisterViewVue
   }
 ]
 

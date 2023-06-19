@@ -6,7 +6,8 @@
     <router-link to="/modelo">Modelo</router-link>|
     <router-link to="/veiculo">Veiculo</router-link>|
     <router-link to="/condutores">Condutores</router-link>|
-    <router-link to="/movimentacao">Movimentacao</router-link>
+    <router-link to="/movimentacao">Movimentacao</router-link>|
+    <router-link to="/register">Register</router-link>
   </nav>
   <router-view/>
   
