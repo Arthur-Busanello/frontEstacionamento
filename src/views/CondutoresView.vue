@@ -23,13 +23,15 @@
         <th class="col-3">Modelo</th>
         <th class="col-3">Marca</th>
         <th class="col-3">Veiculo</th>
-        <th class="col-3"><button class="btn btn-primary">options</button></th>
+        <th class="col-"><button class="btn btn-primary">update</button></th>
+        <th class="col-"><button class="btn btn-primary">delete</button></th>
       </tr>
       <tr>
         <th class="col-3">Modelo</th>
         <th class="col-3">Marca</th>
         <th class="col-3">Veiculo</th>
-        <th class="col-3"><button class="btn btn-primary">options</button></th>
+        <th class="col-"><button class="btn btn-primary">update</button></th>
+        <th class="col-"><button class="btn btn-primary">delete</button></th>
       </tr>
     </thead>
   </table>

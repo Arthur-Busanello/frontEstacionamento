@@ -20,14 +20,16 @@
   <table class="table table-bordered table-dark">
     <thead>
       <tr>
-        <th class="col-5">Model</th>
-        <th class="col-5">Marca</th>
-        <th class="col-2"><button class="btn btn-primary">options</button></th>
+        <th class="col-4">Model</th>
+        <th class="col-4">Marca</th>
+        <th class="col-2"><button class="btn btn-primary">update</button></th>
+        <th class="col-2"><button class="btn btn-primary">delete</button></th>
       </tr>
       <tr>
-        <th class="col-5">Model</th>
-        <th class="col-5">Marca</th>
-        <th class="col-2"><button class="btn btn-primary">options</button></th>
+        <th class="col-4">Model</th>
+        <th class="col-4">Marca</th>
+        <th class="col-2"><button class="btn btn-primary">update</button></th>
+        <th class="col-2"><button class="btn btn-primary">delete</button></th>
       </tr>
     </thead>
   </table>

@@ -22,9 +22,8 @@
       <thead>
         <tr>
           <th class="col-9">new register</th>
-          <th class="col-3">
-            <button class="btn btn-primary">Options</button>
-          </th>
+          <th class="col-"><button class="btn btn-primary">update</button></th>
+        <th class="col-"><button class="btn btn-primary">delete</button></th>
         </tr>
       </thead>
     </table>

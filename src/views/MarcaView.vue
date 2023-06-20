@@ -17,9 +17,14 @@
     <table class="table table-bordered table-dark">
       <thead>
         <tr>
-          <th class="col-9">Nome</th>
-          <th class="col-3">
-            <button class="btn btn-primary">Options</button>
+          <th class="col-8">Nome</th>
+          <th class="col-">
+            <button class="btn btn-primary">updade</button>
+            
+          </th>
+          <th class="col-">
+            <button class="btn btn-primary">delete</button>
+            
           </th>
         </tr>
       </thead>
