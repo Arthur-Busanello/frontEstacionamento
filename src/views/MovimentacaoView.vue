@@ -21,19 +21,15 @@
     <thead>
       <tr>
         <th class="col-">Entrada</th>
-        <th class="col-">Condutor</th>
-        <th class="col-">Modelo</th>
-        <th class="col-">Marca</th>
         <th class="col-">Veiculo</th>
+        <th class="col-">Condutor</th>
         <th class="col-"><button class="btn btn-primary">update</button></th>
         <th class="col-"><button class="btn btn-primary">delete</button></th>
       </tr>
       <tr>
         <th class="col-">Entrada</th>
-        <th class="col-">Condutor</th>
-        <th class="col-">Modelo</th>
-        <th class="col-">Marca</th>
         <th class="col-">Veiculo</th>
+        <th class="col-">Condutor</th>
         <th class="col-"><button class="btn btn-primary">update</button></th>
         <th class="col-"><button class="btn btn-primary">delete</button></th>
       </tr>

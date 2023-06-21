@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 
-import { Marca } from "@/models/marca";
+import { Marca } from "@/models/MarcaModel";
 import { PageRequest } from "@/models/pages/page-request";
 import { PageResponse } from "@/models/pages/page-response";
 

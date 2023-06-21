@@ -2,7 +2,7 @@
   <nav class="navbar navbar-light bg-light justify-content-between">
     <a class="navbar-brand">Register</a>
     <form class="form-inline">
-      <input class="form-control mr-sm-2" type="text" placeholder="Register" aria-label="Register">
+      <input class="form-control mr-sm-2" type="text" placeholder="search" aria-label="Register">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</button>
       <div>
         <select v-model="selectedOption">
