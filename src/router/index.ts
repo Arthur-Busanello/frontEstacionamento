@@ -22,7 +22,7 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/marca/formulario',
     name: 'marca-formulario-view',
-    component: MarcaFormViewVue
+    component: MarcaFormViewVue,
     children: [
       {
         path: '/marca/formulario',
