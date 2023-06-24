@@ -4,9 +4,10 @@ import CondutoresViewVue from '@/views/CondutoresView.vue'
 import VeiculoViewVue from '@/views/VeiculoView.vue'
 import ModeloViewVue from '@/views/ModeloView.vue'
 import MovimentacaoViewVue from '@/views/MovimentacaoView.vue'
-import RegisterViewVue from '@/views/RegisterView.vue'
-import MarcaListaViewVue from '@/views/marca/MarcaListaView.vue'
+// import RegisterViewVue from '@/views/RegisterView.vue'
+// import MarcaListaViewVue from '@/views/marca/MarcaListaView.vue'
 import MarcaFormViewVue from '@/views/marca/MarcaFormView.vue'
+import MarcaViewVue from '@/views/marca/MarcaView.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -15,10 +16,15 @@ const routes: Array<RouteRecordRaw> = [
     component: HomeView
   },
   {
-    path: '/marca/lista',
-    name: 'marca-lista-view',
-    component:MarcaListaViewVue
+    path: '/marca',
+    name: 'marca',
+    component:MarcaViewVue
   },
+  // {
+  //   path: '/marca/lista',
+  //   name: 'marca-lista-view',
+  //   component:MarcaListaViewVue
+  // },
   {
     path: '/marca/formulario',
     name: 'marca-formulario-view',
@@ -56,11 +62,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'movimentacao',
     component: MovimentacaoViewVue
   },
-  {
-    path: '/register',
-    name: 'register',
-    component: RegisterViewVue
-  },
+  // {
+  //   path: '/register',
+  //   name: 'register',
+  //   component: RegisterViewVue
+  // },
 ]
 
 const router = createRouter({

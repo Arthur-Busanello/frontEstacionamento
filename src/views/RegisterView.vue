@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
   <nav class="navbar navbar-light bg-light justify-content-between">
     <a class="navbar-brand">Register</a>
     <form class="form-inline">
@@ -63,4 +63,4 @@ export default {
   margin: 0 auto;
   padding: 20px;
 }
-</style>
+</style> -->
