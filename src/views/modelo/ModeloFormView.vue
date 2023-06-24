@@ -1,0 +1,122 @@
+<template>
+    <h2>Cadastrar Marca</h2>
+    <hr>
+    <h5 class="labeling">Nome do modelo</h5>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="nome" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Adicionar</button>
+      <router-link to="/marca"><button class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
+    </div>
+  </template>
+  
+  <script lang="ts">
+  import  MarcaClient  from '@/client/MarcaClient';
+  import { Marca } from '@/models/MarcaModel';
+  import { defineComponent } from 'vue';
+  
+  export default defineComponent({
+    name: 'MarcaFormulario',
+    data() {
+      return {
+        marca: new Marca(),
+        mensagem: {
+          ativo: false,
+          titulo: '',
+          mensagem: '',
+          css: '',
+        },
+      };
+    },
+    computed: {
+      id() {
+        return this.$route.query.id;
+      },
+      form() {
+        return this.$route.query.form;
+      },
+    },
+    mounted() {
+      if (this.id !== undefined) {
+        this.findById(Number(this.id));
+      }
+    },
+    methods: {
+      onClickCadastrar() {
+        MarcaClient.cadastrar(this.marca)
+        .then(sucess => {
+            this.marca = new Marca()
+            this.mensagem.ativo = true;
+            this.mensagem.mensagem = sucess;
+            this.mensagem.titulo = "Parabens. ";
+            this.mensagem.css = "alert alert-success alert-dismissible fade show";
+          })
+          .catch((error: string) => {
+            this.mensagem.ativo = true;
+            this.mensagem.mensagem = error;
+            this.mensagem.titulo = 'Error.';
+            this.mensagem.css = 'alert alert-danger alert-dismissible fade show';
+          });
+      },
+      findById(id: number) {
+        MarcaClient.findById(id)
+          .then((sucess: Marca) => {
+            this.marca = sucess;
+          })
+          .catch((error: string) => {
+            this.mensagem.ativo = true;
+            this.mensagem.mensagem = error;
+            this.mensagem.titulo = 'Error.';
+            this.mensagem.css = 'alert alert-danger alert-dismissible fade show';
+          });
+      },
+      onClickEditar(){
+        MarcaClient.editar(this.marca.id, this.marca)
+          .then(sucess => {
+            this.marca = new Marca()
+            
+            this.mensagem.ativo = true;
+            this.mensagem.mensagem = sucess;
+            this.mensagem.titulo = "Parabens. ";
+            this.mensagem.css = "alert alert-success alert-dismissible fade show";
+          })
+          .catch((error: string) => {
+            this.mensagem.ativo = true;
+            this.mensagem.mensagem = error;
+            this.mensagem.titulo = 'Error.';
+            this.mensagem.css = 'alert alert-danger alert-dismissible fade show';
+          });
+      },
+      onClickExcluir(){
+        MarcaClient.deletar(this.marca.id)
+          .then(sucess => {
+            this.marca = new Marca()
+            
+            this.$router.push({ name: 'marca-lista-view' });
+          })
+          .catch(error => {
+            this.mensagem.ativo = true;
+            this.mensagem.mensagem = error;
+            this.mensagem.titulo = "Error. ";
+            this.mensagem.css = "alert alert-danger alert-dismissible fade show";
+          });
+      },
+    },
+  });
+  </script>
+  <style>
+  .labeling{
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 14px;
+    font-weight: bold;
+  }
+  .card{
+    display: flex;
+    justify-content: center;
+  }
+  .platform{
+    border: 1px transparent black;
+  }
+  </style>
+  
+  

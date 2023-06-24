@@ -3,7 +3,6 @@
     <div class="row">
       <h1>Lista de Marcas</h1>
     </div>
-   
   </div>
   <nav class="navbar navbar-light bg-light justify-content-between">
     <a class="navbar-brand">Search Marca</a>

@@ -39,21 +39,27 @@ export class ModeloClient {
         }
     }
 
-    public async cadastrar(modelo : Modelo) : Promise<void> {
+    public async cadastrar(modelo : Modelo) :Promise<string> {
         try {
-            return (await this.axiosClient.post('/', modelo))
-        } catch (error : any) {
+            return (await this.axiosClient.post<string>(``, modelo)).data
+        } catch (error:any) {
             return Promise.reject(error.response)
         }
     }
 
-    public async editar(modelo : Modelo) : Promise<void> {
+    public async editar(id: number, modelo : Modelo) : Promise<string> {
         try {
-            return (await this.axiosClient.post(`/${modelo.id}`, modelo)).data
+            return (await this.axiosClient.put<string>(`/${id}`, modelo)).data
+        } catch (error:any) {
+            return Promise.reject(error.response)
+        }
+    }
+    public async deletar(id: number): Promise<string> {
+        try {
+            return (await this.axiosClient.delete<string>(`/${id}`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
-        
     }
 
 
@@ -71,3 +77,4 @@ export class ModeloClient {
         }
     }
 }
+export default new ModeloClient();
