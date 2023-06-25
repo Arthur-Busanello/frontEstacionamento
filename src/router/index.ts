@@ -2,12 +2,14 @@ import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import CondutoresViewVue from '@/views/CondutoresView.vue'
 import VeiculoViewVue from '@/views/VeiculoView.vue'
-import ModeloViewVue from '@/views/ModeloView.vue'
+import ModeloViewVue from '@/views/modelo/ModeloView.vue'
 import MovimentacaoViewVue from '@/views/MovimentacaoView.vue'
 // import RegisterViewVue from '@/views/RegisterView.vue'
 // import MarcaListaViewVue from '@/views/marca/MarcaListaView.vue'
 import MarcaFormViewVue from '@/views/marca/MarcaFormView.vue'
 import MarcaViewVue from '@/views/marca/MarcaView.vue'
+import ModeloFormViewVue from '@/views/modelo/ModeloFormView.vue'
+
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -56,6 +58,23 @@ const routes: Array<RouteRecordRaw> = [
     path: '/modelo',
     name: 'modelo',
     component: ModeloViewVue
+  },
+  {
+    path: '/modelo/formulario',
+    name: 'modelo-formulario-view',
+    component: ModeloFormViewVue,
+    children: [
+      {
+        path: '/modelo/formulario',
+        name: 'modelo-formulario-editar-view',
+        component: ModeloFormViewVue,
+      },
+      {
+        path: '/modelo/formulario',
+        name: 'modelo-formulario-excluir-view',
+        component:  ModeloFormViewVue,
+      },
+    ]
   },
   {
     path: '/movimentacao',
