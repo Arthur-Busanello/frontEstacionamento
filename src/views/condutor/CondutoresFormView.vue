@@ -10,15 +10,15 @@
   </template>
   
   <script lang="ts">
-  import  MarcaClient  from '@/client/MarcaClient';
-  import { Marca } from '@/models/MarcaModel';
+import  CondutorClient from '@/client/condutorClient';
+  import { Condutor } from '@/models/condutor';
   import { defineComponent } from 'vue';
   
   export default defineComponent({
-    name: 'MarcaFormulario',
+    name: 'CondutoresFormulario',
     data() {
       return {
-        marca: new Marca(),
+        condutor: new Condutor(),
         mensagem: {
           ativo: false,
           titulo: '',
@@ -42,9 +42,9 @@
     },
     methods: {
       onClickCadastrar() {
-        MarcaClient.cadastrar(this.marca)
+        CondutorClient.cadastrar(this.condutor)
         .then(sucess => {
-            this.marca = new Marca()
+            this.condutor = new Condutor()
             this.mensagem.ativo = true;
             this.mensagem.mensagem = sucess;
             this.mensagem.titulo = "Parabens. ";
@@ -58,9 +58,9 @@
           });
       },
       findById(id: number) {
-        MarcaClient.findById(id)
-          .then((sucess: Marca) => {
-            this.marca = sucess;
+        CondutorClient.findById(id)
+          .then((sucess: Condutor) => {
+            this.condutor = sucess;
           })
           .catch((error: string) => {
             this.mensagem.ativo = true;
@@ -70,9 +70,9 @@
           });
       },
       onClickEditar(){
-        MarcaClient.editar(this.marca.id, this.marca)
+        CondutorClient.editar(this.condutor.id, this.condutor)
           .then(sucess => {
-            this.marca = new Marca()
+            this.condutor = new Condutor()
             
             this.mensagem.ativo = true;
             this.mensagem.mensagem = sucess;
@@ -87,11 +87,11 @@
           });
       },
       onClickExcluir(){
-        MarcaClient.deletar(this.marca.id)
+        CondutorClient.deletar(this.condutor.id)
           .then(sucess => {
-            this.marca = new Marca()
+            this.condutor = new Condutor()
             
-            this.$router.push({ name: 'marca-lista-view' });
+            this.$router.push({ name: 'condutores--view' });
           })
           .catch(error => {
             this.mensagem.ativo = true;
@@ -119,4 +119,4 @@
   }
   </style>
   
-  
+  @/client/CondutorClient

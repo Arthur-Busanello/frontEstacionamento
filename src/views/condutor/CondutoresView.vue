@@ -34,11 +34,66 @@
         <th class="col-"><button class="btn btn-primary">delete</button></th>
       </tr>
     </thead>
+    <tbody class="table-group-divider">
+              
+              <tr v-for="item in CondutoresLista" :key="item.id">
+                <th class="col-md-1">{{ item.id }}</th>
+                <th class="col-md-2"> 
+                  <span v-if="item.ativo" class="badge text-bg-success"> Ativo </span>
+                  <span v-if="!item.ativo" class="badge text-bg-danger"> Inativo </span>
+                </th>
+                <th class="text-start">{{ item.nome }}</th>
+                <th class="col-md-2">
+                  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <router-link type="button" class="btn btn-sm btn-warning" 
+                        :to="{ name: 'condutores-formulario-editar-view', query: { id: item.id, form: 'editar' } } "> 
+                      Editar 
+                    </router-link>
+                    <router-link type="button" class="btn btn-sm btn-danger" 
+                        :to="{ name: 'condutores-formulario-excluir-view', query: { id: item.id, form: 'excluir' } } ">
+                      Excluir
+                    </router-link>
+                  </div>
+                </th>
+              </tr>
+  
+            </tbody>
   </table>
 </div>
 
 
 </template>
+<script lang="ts">
+  
+  import { defineComponent } from 'vue';
+  
+  import CondutorClient from '@/client/CondutorClient'
+  import { Modelo } from '@/models/ModeloModel';
+  
+  export default defineComponent({
+    name: 'CondutorLista',
+    data() {
+      return {
+        ModeloLista: new Array<Modelo>()
+      }
+    },
+    mounted() {
+      this.findAll();
+    },
+    methods: {  
+      findAll() {
+       ModeloClient.listAll()
+          .then(sucess => {
+            this.ModeloLista = sucess
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
+    }
+  });
+  
+  </script>
 
 <style>
 
@@ -61,4 +116,4 @@ color: white;
 }
 
 
-</style>
+</style>@/client/CondutorClient
