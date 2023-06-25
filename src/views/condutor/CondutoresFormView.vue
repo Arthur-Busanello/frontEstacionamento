@@ -1,24 +1,24 @@
 <template>
-    <h2>Cadastrar Modelo</h2>
+    <h2>Cadastrar Condutor</h2>
     <hr>
-    <h5 class="labeling">Nome do modelo</h5>
+    <h5 class="labeling">Nome do Condutor</h5>
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="nome" aria-label="Recipient's username" aria-describedby="button-addon2">
       <button class="btn btn-outline-secondary" type="button" id="button-addon2">Adicionar</button>
-      <router-link to="/modelo"><button class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
+      <router-link to="/condutores"><button class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
     </div>
   </template>
   
   <script lang="ts">
-  import  ModeloClient  from '@/client/ModeloClient';
-  import { Modelo } from '@/models/ModeloModel';
+  import  MarcaClient  from '@/client/MarcaClient';
+  import { Marca } from '@/models/MarcaModel';
   import { defineComponent } from 'vue';
   
   export default defineComponent({
-    name: 'ModeloFormulario',
+    name: 'MarcaFormulario',
     data() {
       return {
-        modelo: new Modelo(),
+        marca: new Marca(),
         mensagem: {
           ativo: false,
           titulo: '',
@@ -42,9 +42,9 @@
     },
     methods: {
       onClickCadastrar() {
-       ModeloClient.cadastrar(this.modelo)
+        MarcaClient.cadastrar(this.marca)
         .then(sucess => {
-            this.modelo = new Modelo()
+            this.marca = new Marca()
             this.mensagem.ativo = true;
             this.mensagem.mensagem = sucess;
             this.mensagem.titulo = "Parabens. ";
@@ -58,9 +58,9 @@
           });
       },
       findById(id: number) {
-        ModeloClient.findById(id)
-          .then((sucess: Modelo) => {
-            this.modelo = sucess;
+        MarcaClient.findById(id)
+          .then((sucess: Marca) => {
+            this.marca = sucess;
           })
           .catch((error: string) => {
             this.mensagem.ativo = true;
@@ -70,9 +70,9 @@
           });
       },
       onClickEditar(){
-        ModeloClient.editar(this.modelo.id, this.modelo)
+        MarcaClient.editar(this.marca.id, this.marca)
           .then(sucess => {
-            this.modelo = new Modelo()
+            this.marca = new Marca()
             
             this.mensagem.ativo = true;
             this.mensagem.mensagem = sucess;
@@ -87,11 +87,11 @@
           });
       },
       onClickExcluir(){
-        ModeloClient.deletar(this.modelo.id)
+        MarcaClient.deletar(this.marca.id)
           .then(sucess => {
-            this.modelo = new Modelo()
+            this.marca = new Marca()
             
-            this.$router.push({ name: 'modelo-view' });
+            this.$router.push({ name: 'marca-lista-view' });
           })
           .catch(error => {
             this.mensagem.ativo = true;
@@ -119,4 +119,4 @@
   }
   </style>
   
-  @/models/ModeloModel
+  

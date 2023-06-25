@@ -91,7 +91,7 @@ export default defineComponent({
         .then(sucess => {
           this.marca = new Marca()
           
-          this.$router.push({ name: 'marca-lista-view' });
+          this.$router.push({ name: 'marca-view' });
         })
         .catch(error => {
           this.mensagem.ativo = true;

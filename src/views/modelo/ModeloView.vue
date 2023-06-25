@@ -69,7 +69,7 @@
   import { defineComponent } from 'vue';
   
   import ModeloClient from '@/client/ModeloClient';
-  import { Modelo } from '@/models/modelo';
+  import { Modelo } from '@/models/ModeloModel';
   
   export default defineComponent({
     name: 'ModeloLista',
@@ -117,4 +117,4 @@ color: black;
 }
 
 
-</style>
+</style>@/models/ModeloModel

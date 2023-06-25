@@ -1,10 +1,10 @@
 import axios, { AxiosInstance } from "axios";
 
-import { Modelo } from "@/models/modelo";
+import { Modelo } from "@/models/ModeloModel";
 import { PageRequest } from "@/models/pages/page-request";
 import { PageResponse } from "@/models/pages/page-response";
 
-export class ModeloClient {
+ class ModeloClient {
     
     private axiosClient : AxiosInstance
 

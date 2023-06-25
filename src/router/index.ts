@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import CondutoresViewVue from '@/views/CondutoresView.vue'
+import CondutoresViewVue from '@/views/condutor/CondutoresView.vue'
 import VeiculoViewVue from '@/views/VeiculoView.vue'
 import ModeloViewVue from '@/views/modelo/ModeloView.vue'
 import MovimentacaoViewVue from '@/views/MovimentacaoView.vue'
@@ -9,8 +9,7 @@ import MovimentacaoViewVue from '@/views/MovimentacaoView.vue'
 import MarcaFormViewVue from '@/views/marca/MarcaFormView.vue'
 import MarcaViewVue from '@/views/marca/MarcaView.vue'
 import ModeloFormViewVue from '@/views/modelo/ModeloFormView.vue'
-
-
+import CondutoresFormViewVue from '@/views/condutor/CondutoresFormView.vue'
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
@@ -48,6 +47,23 @@ const routes: Array<RouteRecordRaw> = [
     path: '/condutores',
     name: 'condutores',
     component: CondutoresViewVue
+  },
+  {
+    path: '/condutores/formulario',
+    name: 'condutores-formulario-view',
+    component: CondutoresFormViewVue,
+    children: [
+      {
+        path: '/condutores/formulario',
+        name: 'condutores-formulario-editar-view',
+        component: CondutoresFormViewVue,
+      },
+      {
+        path: '/condutores/formulario',
+        name: 'condutores-formulario-excluir-view',
+        component:  CondutoresFormViewVue,
+      },
+    ]
   },
   {
     path: '/veiculo',

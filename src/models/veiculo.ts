@@ -1,5 +1,5 @@
 import { AbstractEntity } from "./abstract-entity";
-import { Modelo } from "./modelo";
+import { Modelo } from "./ModeloModel";
 import { Cor } from "./cor";
 import { Tipo } from "./tipo";
 
