@@ -68,8 +68,8 @@
   
   import { defineComponent } from 'vue';
   
-  import { ModeloClient } from '@/client/ModeloClient';
-import { Modelo } from '@/models/modelo';
+  import ModeloClient from '@/client/ModeloClient';
+  import { Modelo } from '@/models/modelo';
   
   export default defineComponent({
     name: 'ModeloLista',
@@ -81,10 +81,9 @@ import { Modelo } from '@/models/modelo';
     mounted() {
       this.findAll();
     },
-    methods: {
-  
+    methods: {  
       findAll() {
-        ModeloClient.listAll()
+       ModeloClient.listAll()
           .then(sucess => {
             this.ModeloLista = sucess
           })
