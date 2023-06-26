@@ -1,24 +1,24 @@
 <template>
-    <h2>Cadastrar Condutor</h2>
+    <h2>Cadastrar Veiculo</h2>
     <hr>
-    <h5 class="labeling">Nome do Condutor</h5>
+    <h5 class="labeling">Nome do Veiculo</h5>
     <div class="input-group mb-3">
       <input type="text" class="form-control" placeholder="nome" aria-label="Recipient's username" aria-describedby="button-addon2">
       <button class="btn btn-outline-secondary" type="button" id="button-addon2">Adicionar</button>
-      <router-link to="/condutores"><button class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
+      <router-link to="/veiculo"><button class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
     </div>
   </template>
   
   <script lang="ts">
-import  CondutorClient from '@/client/CondutorClient';
-  import { Condutor } from '@/models/CondutorModel';
+  import VeiculoClient from '@/client/VeiculoClient';
+  import { Veiculo } from '@/models/VeiculoModel';
   import { defineComponent } from 'vue';
   
   export default defineComponent({
-    name: 'CondutoresFormulario',
+    name: 'VeiculoFormulario',
     data() {
       return {
-        condutor: new Condutor(),
+        veiculo: new Veiculo(),
         mensagem: {
           ativo: false,
           titulo: '',
@@ -42,9 +42,9 @@ import  CondutorClient from '@/client/CondutorClient';
     },
     methods: {
       onClickCadastrar() {
-        CondutorClient.cadastrar(this.condutor)
+        VeiculoClient.cadastrar(this.veiculo)
         .then(sucess => {
-            this.condutor = new Condutor()
+            this.veiculo = new Veiculo()
             this.mensagem.ativo = true;
             this.mensagem.mensagem = sucess;
             this.mensagem.titulo = "Parabens. ";
@@ -58,9 +58,9 @@ import  CondutorClient from '@/client/CondutorClient';
           });
       },
       findById(id: number) {
-        CondutorClient.findById(id)
-          .then((sucess: Condutor) => {
-            this.condutor = sucess;
+        VeiculoClient.findById(id)
+          .then((sucess: Veiculo) => {
+            this.veiculo = sucess;
           })
           .catch((error: string) => {
             this.mensagem.ativo = true;
@@ -70,9 +70,9 @@ import  CondutorClient from '@/client/CondutorClient';
           });
       },
       onClickEditar(){
-        CondutorClient.editar(this.condutor.id, this.condutor)
+        VeiculoClient.editar(this.veiculo.id, this.veiculo)
           .then(sucess => {
-            this.condutor = new Condutor()
+            this.veiculo = new Veiculo()
             
             this.mensagem.ativo = true;
             this.mensagem.mensagem = sucess;
@@ -87,11 +87,11 @@ import  CondutorClient from '@/client/CondutorClient';
           });
       },
       onClickExcluir(){
-        CondutorClient.deletar(this.condutor.id)
+        VeiculoClient.deletar(this.veiculo.id)
           .then(sucess => {
-            this.condutor = new Condutor()
+            this.veiculo = new Veiculo()
             
-            this.$router.push({ name: 'condutores-view' });
+            this.$router.push({ name: 'veiculo-view' });
           })
           .catch(error => {
             this.mensagem.ativo = true;
