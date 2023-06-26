@@ -2,17 +2,20 @@
 
 
 
-  <div class="container text-center">
+<div class="container text-center">
     <div class="row">
       <h1>Lista de Condutores</h1>
     </div>
   </div>
+
   <nav class="navbar navbar-light bg-light justify-content-between">
-<a class="navbar-brand">Search Marca</a>
+<a class="navbar-brand">Search Condutor</a>
 <form class="form-inline">
   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-  <button class="btn btn-outline-success my-2 my-sm-0 " type="submit">Search</button>
-  <router-link to="/register" class="btn btn-primary">Register</router-link>
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+ <router-link type="button" class="btn btn-success" 
+              to="/condutores/formulario">Cadastrar
+            </router-link>
 </form>
 </nav>
  
@@ -36,7 +39,7 @@
     </thead>
     <tbody class="table-group-divider">
               
-              <tr v-for="item in CondutoresLista" :key="item.id">
+              <tr v-for="item in CondutorLista" :key="item.id">
                 <th class="col-md-1">{{ item.id }}</th>
                 <th class="col-md-2"> 
                   <span v-if="item.ativo" class="badge text-bg-success"> Ativo </span>
@@ -68,13 +71,13 @@
   import { defineComponent } from 'vue';
   
   import CondutorClient from '@/client/CondutorClient'
-  import { Modelo } from '@/models/ModeloModel';
+  import { Condutor } from '@/models/CondutorModel';
   
   export default defineComponent({
     name: 'CondutorLista',
     data() {
       return {
-        ModeloLista: new Array<Modelo>()
+        CondutorLista: new Array<Condutor>()
       }
     },
     mounted() {
@@ -82,9 +85,9 @@
     },
     methods: {  
       findAll() {
-       ModeloClient.listAll()
+       CondutorClient.listAll()
           .then(sucess => {
-            this.ModeloLista = sucess
+            this.CondutorLista = sucess
           })
           .catch(error => {
             console.log(error);
@@ -116,4 +119,4 @@ color: white;
 }
 
 
-</style>@/client/CondutorClient
+</style>@/client/CondutorClient@/models/CondutorModel

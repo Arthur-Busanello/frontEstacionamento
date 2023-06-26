@@ -10,8 +10,8 @@
   </template>
   
   <script lang="ts">
-import  CondutorClient from '@/client/condutorClient';
-  import { Condutor } from '@/models/condutor';
+import  CondutorClient from '@/client/CondutorClient';
+  import { Condutor } from '@/models/CondutorModel';
   import { defineComponent } from 'vue';
   
   export default defineComponent({
@@ -119,4 +119,4 @@ import  CondutorClient from '@/client/condutorClient';
   }
   </style>
   
-  @/client/CondutorClient
+  @/client/CondutorClient@/models/Condutor@/models/CondutorModel

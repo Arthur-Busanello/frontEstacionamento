@@ -1,5 +1,5 @@
 import { AbstractEntity } from "./abstract-entity";
-import { Condutor } from "./condutor";
+import { Condutor } from "./CondutorModel";
 import { Veiculo } from "./veiculo";
 
 export class Movimentacao extends AbstractEntity {
