@@ -41,7 +41,7 @@ import { PageResponse } from "@/models/pages/page-response";
 
     public async cadastrar(marca: Marca): Promise<string> {
         try {
-            return (await this.axiosClient.post<string>(``, marca)).data
+            return (await this.axiosClient.post<string>(`/create`, marca)).data
         } catch (error:any) {
             return Promise.reject(error.response)
         }
@@ -49,7 +49,7 @@ import { PageResponse } from "@/models/pages/page-response";
 
     public async editar(id: number, marca: Marca): Promise<string> {
         try {
-            return (await this.axiosClient.put<string>(`/${id}`, marca)).data
+            return (await this.axiosClient.put<string>(`/edit/${id}`, marca)).data
         } catch (error:any) {
             return Promise.reject(error.response)
         }
@@ -57,7 +57,7 @@ import { PageResponse } from "@/models/pages/page-response";
 
     public async deletar(id: number): Promise<string> {
         try {
-            return (await this.axiosClient.delete<string>(`/${id}`)).data
+            return (await this.axiosClient.delete<string>(`/delete/${id}`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }

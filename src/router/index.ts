@@ -15,11 +15,7 @@ import MovimentacaoFormViewVue from '@/views/movimentacao/MovimentacaoFormView.v
 
 
 const routes: Array<RouteRecordRaw> = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
+  
   {
     path: '/marca',
     name: 'marca',
