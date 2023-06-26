@@ -20,21 +20,22 @@
 </nav>
 
 <div class="container2 text-center">
-  <table class="table table-bordered table-dark">
-    <thead>
-      <tr>
-        <th class="col-4">Model</th>
-        <th class="col-4">Marca</th>
-        <th class="col-2"><button class="btn btn-primary">update</button></th>
-        <th class="col-2"><button class="btn btn-primary">delete</button></th>
-      </tr>
-      <tr>
-        <th class="col-4">Model</th>
-        <th class="col-4">Marca</th>
-        <th class="col-2"><button class="btn btn-primary">update</button></th>
-        <th class="col-2"><button class="btn btn-primary">delete</button></th>
-      </tr>
-    </thead>
+    <table class="table table-bordered table-dark">
+      <thead>
+        <tr>
+          <th scope="col-3">ID</th>
+                <th scope="col-3">Ativo</th>
+                <th scope="col-3" class="text-start">Modelo</th>
+                <th scope="col-3" class="text-start">Marca</th>
+          <th class="col-1">
+            <button class="btn btn-primary">updade</button>
+            
+          </th>
+          <th class="col-1">
+            <button class="btn btn-primary">delete</button>
+          </th>
+        </tr>
+      </thead>
     <tbody class="table-group-divider">
               
               <tr v-for="item in ModeloLista" :key="item.id">

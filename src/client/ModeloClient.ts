@@ -41,7 +41,7 @@ import { PageResponse } from "@/models/pages/page-response";
 
     public async cadastrar(modelo : Modelo) :Promise<string> {
         try {
-            return (await this.axiosClient.post<string>(``, modelo)).data
+            return (await this.axiosClient.post<string>(`/create`, modelo)).data
         } catch (error:any) {
             return Promise.reject(error.response)
         }
@@ -49,14 +49,14 @@ import { PageResponse } from "@/models/pages/page-response";
 
     public async editar(id: number, modelo : Modelo) : Promise<string> {
         try {
-            return (await this.axiosClient.put<string>(`/${id}`, modelo)).data
+            return (await this.axiosClient.put<string>(`/edit/${id}`, modelo)).data
         } catch (error:any) {
             return Promise.reject(error.response)
         }
     }
     public async deletar(id: number): Promise<string> {
         try {
-            return (await this.axiosClient.delete<string>(`/${id}`)).data
+            return (await this.axiosClient.delete<string>(`/delete/${id}`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
