@@ -22,6 +22,7 @@
           <th scope="col-3">ID</th>
                 <th scope="col-3">Ativo</th>
                 <th scope="col-4" class="text-start">Marca</th>
+                <th scope="col-3" class="text-start">OPCOES</th>
         
         </tr>
       </thead>

@@ -3,14 +3,19 @@
     <hr>
     <h5 class="labeling">Nome do Veiculo</h5>
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="nome" aria-label="Recipient's username" aria-describedby="button-addon2">
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Adicionar</button>
-      <router-link to="/veiculo"><button class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
-    </div>
+    <input type="text" class="form-control" v-if="form === undefined" v-veiculo="veiculo.placa" placeholder="placa" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <!-- <input type="number" class="form-control" v-if="form === undefined" v-modelo="modelo" placeholder="id" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <input type="number" class="form-control" v-if="form === undefined" v-cor="cor" placeholder="cor" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <input type="number" class="form-control" v-if="form === undefined" v-tipo="tipo" placeholder="tipo" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <input type="number" class="form-control" v-if="form === undefined" v-ano="ano" placeholder="ano" aria-label="Recipient's username" aria-describedby="button-addon2"> -->
+    <button class="btn btn-outline-secondary" v-if="form === undefined" @click="onClickCadastrar()"  type="button" id="button-addon2">Adicionar</button>
+    <router-link to="/modelo"><button v-if="form === undefined" class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
+  </div>
   </template>
   
   <script lang="ts">
   import VeiculoClient from '@/client/VeiculoClient';
+import { Modelo } from '@/models/ModeloModel';
   import { Veiculo } from '@/models/VeiculoModel';
   import { defineComponent } from 'vue';
   

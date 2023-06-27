@@ -23,19 +23,15 @@
   <table class="table table-bordered table-dark">
     <thead>
       <tr>
-        <th class="col-3">Modelo</th>
-        <th class="col-3">Marca</th>
-        <th class="col-3">Veiculo</th>
-        <th class="col-"><button class="btn btn-primary">update</button></th>
-        <th class="col-"><button class="btn btn-primary">delete</button></th>
-      </tr>
-      <tr>
-        <th class="col-3">Modelo</th>
-        <th class="col-3">Marca</th>
-        <th class="col-3">Veiculo</th>
-        <th class="col-"><button class="btn btn-primary">update</button></th>
-        <th class="col-"><button class="btn btn-primary">delete</button></th>
-      </tr>
+          <th scope="col-3">ID</th>
+                <th scope="col-3">Ativo</th>
+                <th scope="col-3" class="text-start">CPF</th>
+                <th scope="col-3" class="text-start">NOME</th>
+                <th scope="col-3" class="text-start">TELEFONE</th>
+                <th scope="col-3" class="text-start">TEMPO DESCONTO</th>
+                <th scope="col-3" class="text-start">TEMPO PAGO</th>
+                <th scope="col-3" class="text-start">OPCOES</th>
+        </tr>
     </thead>
     <tbody class="table-group-divider">
               
@@ -45,7 +41,13 @@
                   <span v-if="item.ativo" class="badge text-bg-success"> Ativo </span>
                   <span v-if="!item.ativo" class="badge text-bg-danger"> Inativo </span>
                 </th>
+                <th class="text-start col-md-1">{{ item.cpf }}</th>
                 <th class="text-start">{{ item.nome }}</th>
+                
+                <th class="text-start col-md-1">{{ item.telefone }}</th>
+                <th class="text-start col-md-1">{{ item.tempoDesconto }}</th>
+                <th class="text-start col-md-1">{{ item.tempoPago }}</th>
+                
                 <th class="col-md-2">
                   <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                     <router-link type="button" class="btn btn-sm btn-warning" 
