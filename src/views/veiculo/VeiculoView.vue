@@ -21,22 +21,7 @@
 
 <div class="container2 text-center">
   <table class="table table-bordered table-dark">
-    <thead>
-      <tr>
-        <th class="col-3">Modelo</th>
-        <th class="col-3">Marca</th>
-        <th class="col-3">Condutor</th>
-        <th class="col-"><button class="btn btn-primary">update</button></th>
-        <th class="col-"><button class="btn btn-primary">delete</button></th>
-      </tr>
-      <tr>
-        <th class="col-3">Modelo</th>
-        <th class="col-3">Marca</th>
-        <th class="col-3">Condutor</th>
-        <th class="col-"><button class="btn btn-primary">update</button></th>
-        <th class="col-"><button class="btn btn-primary">delete</button></th>
-      </tr>
-    </thead>
+  
     <tbody class="table-group-divider">
               
               <tr v-for="item in VeiculoLista" :key="item.id">
@@ -46,6 +31,10 @@
                   <span v-if="!item.ativo" class="badge text-bg-danger"> Inativo </span>
                 </th>
                 <th class="text-start">{{ item.placa }}</th>
+                <th class="text-start">{{ item.modelo }}</th>
+                <th class="text-start">{{ item.cor }}</th>
+                <th class="text-start">{{ item.tipo }}</th>
+                <th class="text-start">{{ item.ano }}</th>
                 <th class="col-md-2">
                   <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                     <router-link type="button" class="btn btn-sm btn-warning" 

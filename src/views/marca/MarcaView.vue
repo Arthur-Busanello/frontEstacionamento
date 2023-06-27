@@ -22,13 +22,7 @@
           <th scope="col-3">ID</th>
                 <th scope="col-3">Ativo</th>
                 <th scope="col-4" class="text-start">Marca</th>
-          <th class="col-1">
-            <button class="btn btn-primary">updade</button>
-            
-          </th>
-          <th class="col-1">
-            <button class="btn btn-primary">delete</button>
-          </th>
+        
         </tr>
       </thead>
       <tbody class="table-group-divider">
