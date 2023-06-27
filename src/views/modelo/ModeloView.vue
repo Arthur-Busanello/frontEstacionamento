@@ -38,6 +38,7 @@
       <span v-if="item.ativo" class="badge text-bg-success"> Ativo </span>
       <span v-if="!item.ativo" class="badge text-bg-danger"> Inativo </span>
     </th>
+    
     <th class="text-start">{{ item.nome }}</th>
     <th class="text-start">{{ item.marca.id}}</th>
 
@@ -46,7 +47,7 @@
         <router-link type="button" class="btn btn-sm btn-warning"
   :to="{ name: 'modelo-formulario-editar-view', query: { id: item.id, form: 'editar' }, }">Editar</router-link>
 <router-link type="button" class="btn btn-sm btn-danger"
-  :to="{ name: 'modelo-formulario-excluir-view',query: { id: item.id, form: 'excluir' },}">Excluir</router-link>
+  :to="{ name: 'modelo-formulario-excluir-view',query: { id: item.id, form: 'deletar' },}">Excluir</router-link>
 
       </div>
     </th>

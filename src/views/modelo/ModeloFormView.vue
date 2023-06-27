@@ -1,21 +1,32 @@
 <template>
   <h2>Cadastrar Modelo</h2>
-  <hr>
-  <select class="form-select" aria-label="Default select example">
-</select>
-  <h5 class="labeling">Nome do modelo</h5>
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" v-if="form === undefined" v-model="modelo.nome" placeholder="nome" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <input type="number" class="form-control" v-if="form === undefined" v-marca="marca" placeholder="id" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <button class="btn btn-outline-secondary" v-if="form === undefined" @click="onClickCadastrar()"  type="button" id="button-addon2">Adicionar</button>
-    <router-link to="/modelo"><button v-if="form === undefined" class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
-    <button class="btn btn-outline-secondary" type="button" v-if="form === 'edit'" @click="onClickEdit()"
-      id="button-addon2">Editar</button>
-    <button class="btn btn-outline-secondary" type="button" v-if="form === 'deletar'" @click="onClickDeletar()"
-      id="button-addon2">Deletar</button>
-    <router-link to="/modelo"><button class="btn btn-outline-secondary" type="button"
-        id="button-addon2">voltar</button></router-link>
-  </div>
+<h2 v-if="form === 'editar'">Editar Modelo</h2>
+    <h2 v-if="form === undefined">Cadastrar Modelo</h2>
+    <h2 v-if="form === 'deletar'">Deletar Modelo</h2>
+    <hr>
+    <div v-if="mensagem.active" class="row">
+      <div class="col-md-12 text-start">
+        <div :class="mensagem.css" role="alert">
+          <strong>{{ mensagem.titulo }}</strong> {{ mensagem.mensagem }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <h5 class="labeling" v-if="form === 'edit'">Numero do ID</h5>
+    <input type="text" v-if="form === 'edit'" class="form-control" placeholder="ID" v-model="modelo.id" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <hr v-if="form === 'editar'">
+    <h5 class="labeling" v-if="form === 'deletar'">Numero do ID</h5>
+    <input type="text" v-if="form === 'deletar'" class="form-control" placeholder="ID" v-model="modelo.id" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <h5 class="labeling" v-if="form !== 'deletar'">Nome do Modelo</h5>
+    <div class="input-group mb-3">     
+      <input type="text" class="form-control" placeholder="nome" v-if="form !== 'deletar'" v-model="modelo.nome" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <button class="btn btn-outline-secondary" type="button" v-if="form === undefined" @click="onClickCadastrar()" id="button-addon2">Adicionar</button>
+      <button class="btn btn-outline-secondary" type="button" v-if="form === 'editar'" @click="onClickEdit()" id="button-addon2">Editar</button>
+      <button class="btn btn-outline-secondary" type="button" v-if="form === 'deletar'" @click="onClickDeletar()" id="button-addon2">Deletar</button>
+      <router-link to="/modelo"><button class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
+    </div>
+
 </template>
 
 <script lang="ts">

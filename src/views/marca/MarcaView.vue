@@ -34,6 +34,7 @@
                   <span v-if="item.ativo" class="badge text-bg-success"> Ativo </span>
                   <span v-if="!item.ativo" class="badge text-bg-danger"> Inativo </span>
                 </th>
+               
                 <th class="text-start">{{ item.nome }}</th>
                 <th class="col-md-2">
                   <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -42,7 +43,7 @@
                       Editar 
                     </router-link>
                     <router-link type="button" class="btn btn-sm btn-danger" 
-                        :to="{ name: 'marca-formulario-excluir-view', query: { id: item.id, form: 'excluir' } } ">
+                        :to="{ name: 'marca-formulario-excluir-view', query: { id: item.id, form: 'deletar' } } ">
                       Excluir
                     </router-link>
                   </div>

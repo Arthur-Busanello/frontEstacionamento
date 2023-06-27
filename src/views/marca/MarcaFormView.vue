@@ -23,7 +23,7 @@
     <div class="input-group mb-3">     
       <input type="text" class="form-control" placeholder="nome" v-if="form !== 'deletar'" v-model="marca.nome" aria-label="Recipient's username" aria-describedby="button-addon2">
       <button class="btn btn-outline-secondary" type="button" v-if="form === undefined" @click="onClickCadastrar()" id="button-addon2">Adicionar</button>
-      <button class="btn btn-outline-secondary" type="button" v-if="form === 'edit'" @click="onClickEdit()" id="button-addon2">Editar</button>
+      <button class="btn btn-outline-secondary" type="button" v-if="form === 'editar'" @click="onClickEdit()" id="button-addon2">Editar</button>
       <button class="btn btn-outline-secondary" type="button" v-if="form === 'deletar'" @click="onClickDeletar()" id="button-addon2">Deletar</button>
       <router-link to="/marca"><button class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
     </div>
