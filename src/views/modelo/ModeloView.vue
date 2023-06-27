@@ -44,7 +44,7 @@
       <span v-if="!item.ativo" class="badge text-bg-danger"> Inativo </span>
     </th>
     <th class="text-start">{{ item.nome }}</th>
-    <th class="text-start">{{ item.marcaId ? item.marcaId.nome : '' }}</th>
+    <th class="text-start">{{ item.marca.nome }}</th>
 
     <th class="col-md-2">
       <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -55,6 +55,7 @@
 
       </div>
     </th>
+   
   </tr>
 </tbody>
 
@@ -68,6 +69,7 @@
   import ModeloClient from '@/client/ModeloClient';
   import { Modelo } from '@/models/ModeloModel';
   import { Marca } from '@/models/MarcaModel';
+import MarcaView from '../marca/MarcaView.vue';
 
   export default defineComponent({
     name: 'ModeloLista',
