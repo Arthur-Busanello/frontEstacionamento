@@ -9,6 +9,12 @@
     <input type="number" class="form-control" v-if="form === undefined" v-marca="marca" placeholder="id" aria-label="Recipient's username" aria-describedby="button-addon2">
     <button class="btn btn-outline-secondary" v-if="form === undefined" @click="onClickCadastrar()"  type="button" id="button-addon2">Adicionar</button>
     <router-link to="/modelo"><button v-if="form === undefined" class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
+    <button class="btn btn-outline-secondary" type="button" v-if="form === 'edit'" @click="onClickEdit()"
+      id="button-addon2">Editar</button>
+    <button class="btn btn-outline-secondary" type="button" v-if="form === 'deletar'" @click="onClickDeletar()"
+      id="button-addon2">Deletar</button>
+    <router-link to="/modelo"><button class="btn btn-outline-secondary" type="button"
+        id="button-addon2">voltar</button></router-link>
   </div>
 </template>
 

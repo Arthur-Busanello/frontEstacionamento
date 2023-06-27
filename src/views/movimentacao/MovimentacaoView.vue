@@ -14,7 +14,7 @@
   <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
   <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
  <router-link type="button" class="btn btn-success" 
-              to="/Movimentacao/formulario">Cadastrar
+              to="/movimentacao/formulario">Cadastrar
             </router-link>
 </form>
 </nav>
@@ -25,11 +25,17 @@
       <tr>
                 <th scope="col-3">ID</th>
                 <th scope="col-3">Ativo</th>
-                <th scope="col-3" class="text-start">CPF</th>
-                <th scope="col-3" class="text-start">NOME</th>
-                <th scope="col-3" class="text-start">TELEFONE</th>
+                <th scope="col-3" class="text-start">entrada_veiculo</th>
+                <th scope="col-3" class="text-start">saida_veiculo</th>
+                <th scope="col-3" class="text-start">tempo</th>
                 <th scope="col-3" class="text-start">TEMPO DESCONTO</th>
-                <th scope="col-3" class="text-start">TEMPO PAGO</th>
+                <th scope="col-3" class="text-start">tempo_multa</th>
+                <th scope="col-3" class="text-start">valor_desconto</th>
+                <th scope="col-3" class="text-start">valor_hora_multa</th>
+                <th scope="col-3" class="text-start">valor_multa</th>
+                <th scope="col-3" class="text-start">valot_total</th>
+                <th scope="col-3" class="text-start">condutor</th>
+                <th scope="col-3" class="text-start">veiculo</th>
                 <th scope="col-3" class="text-start">OPCOES</th>
         </tr>
     </thead>
@@ -56,11 +62,11 @@
                 <th class="col-md-2">
                   <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                     <router-link type="button" class="btn btn-sm btn-warning" 
-                        :to="{ name: 'modelo-formulario-editar-view', query: { id: item.id, form: 'editar' } } "> 
+                        :to="{ name: 'movimentacao-formulario-editar-view', query: { id: item.id, form: 'editar' } } "> 
                       Editar 
                     </router-link>
                     <router-link type="button" class="btn btn-sm btn-danger" 
-                        :to="{ name: 'modelo-formulario-excluir-view', query: { id: item.id, form: 'excluir' } } ">
+                        :to="{ name: 'movimentacao-formulario-excluir-view', query: { id: item.id, form: 'excluir' } } ">
                       Excluir
                     </router-link>
                   </div>
