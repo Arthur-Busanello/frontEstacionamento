@@ -4,6 +4,7 @@
     <h5 class="labeling">Nome do modelo</h5>
     <div class="input-group mb-3">
       <input type="text" class="form-control" v-if="form === undefined" v-model="modelo.nome" placeholder="nome" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <!-- <input type="text" class="form-control" v-if="form === undefined" v-marca="this.marcaId.id" placeholder="id" aria-label="Recipient's username" aria-describedby="button-addon2"> -->
       <button class="btn btn-outline-secondary" v-if="form === undefined" @click="onClickCadastrar()"  type="button" id="button-addon2">Adicionar</button>
       <router-link to="/modelo"><button v-if="form === undefined" class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
     </div>

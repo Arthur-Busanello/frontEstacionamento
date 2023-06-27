@@ -36,67 +36,69 @@
           </th>
         </tr>
       </thead>
-    <tbody class="table-group-divider">
-              
-              <tr v-for="item in ModeloLista" :key="item.id">
-                <th class="col-md-1">{{ item.id }}</th>
-                <th class="col-md-2"> 
-                  <span v-if="item.ativo" class="badge text-bg-success"> Ativo </span>
-                  <span v-if="!item.ativo" class="badge text-bg-danger"> Inativo </span>
-                </th>
-                <th class="text-start">{{ item.nome }}</th>
-                <th class="text-start">{{ item.marca.nome }}</th>
-                <th class="col-md-2">
-                  <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                    <router-link type="button" class="btn btn-sm btn-warning" 
-                        :to="{ name: 'modelo-formulario-editar-view', query: { id: item.id, form: 'editar' } } "> 
-                      Editar 
-                    </router-link>
-                    <router-link type="button" class="btn btn-sm btn-danger" 
-                        :to="{ name: 'modelo-formulario-excluir-view', query: { id: item.id, form: 'excluir' } } ">
-                      Excluir
-                    </router-link>
-                  </div>
-                </th>
-              </tr>
-  
-            </tbody>
+      <tbody class="table-group-divider">
+  <tr v-for="item in ModeloLista" :key="item.id">
+    <th class="col-md-1">{{ item.id }}</th>
+    <th class="col-md-2"> 
+      <span v-if="item.ativo" class="badge text-bg-success"> Ativo </span>
+      <span v-if="!item.ativo" class="badge text-bg-danger"> Inativo </span>
+    </th>
+    <th class="text-start">{{ item.nome }}</th>
+    <th class="text-start">{{ item.marcaId ? item.marcaId.nome : '' }}</th>
+
+    <th class="col-md-2">
+      <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+        <router-link type="button" class="btn btn-sm btn-warning"
+  :to="{ name: 'modelo-formulario-editar-view', query: { id: item.id, form: 'editar' }, }">Editar</router-link>
+<router-link type="button" class="btn btn-sm btn-danger"
+  :to="{ name: 'modelo-formulario-excluir-view',query: { id: item.id, form: 'excluir' },}">Excluir</router-link>
+
+      </div>
+    </th>
+  </tr>
+</tbody>
+
   </table>
 </div>
 
 
 </template>
 <script lang="ts">
-  
   import { defineComponent } from 'vue';
-  
   import ModeloClient from '@/client/ModeloClient';
   import { Modelo } from '@/models/ModeloModel';
-  
+  import { Marca } from '@/models/MarcaModel';
+
   export default defineComponent({
     name: 'ModeloLista',
     data() {
       return {
-        ModeloLista: new Array<Modelo>()
-      }
+        ModeloLista: [] as Modelo[],
+      };
     },
     mounted() {
       this.findAll();
     },
-    methods: {  
+    methods: {
       findAll() {
-       ModeloClient.listAll()
-          .then(sucess => {
-            this.ModeloLista = sucess
-          })
-          .catch(error => {
+        ModeloClient.listAll()
+        .then((success) => {
+  this.ModeloLista = success.map((item) => {
+    const modelo: Modelo = { ...item, getNomeMarca: () => item.marcaId.nome };
+    return modelo;
+  });
+})
+
+          .catch((error) => {
             console.log(error);
           });
-      }
-    }
+      },
+    },
   });
-  
-  </script>
+</script>
+
+
+
 
 <style>
 
