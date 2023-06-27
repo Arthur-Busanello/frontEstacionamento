@@ -13,12 +13,12 @@
       </div>
     </div>
     
-    <h5 class="labeling" v-if="form === 'editar'">Numero de ID do modelo</h5>
-  <input type="number" v-if="form === 'editar'" v-model="modelo.nome" class="form-control" placeholder="ID"
-    aria-label="Recipient's username" aria-describedby="button-addon2">
+    <h5 class="labeling" v-if="form === 'editar'">Numero do modelo</h5>
+  <input type="text" v-if="form === 'editar'" v-model="modelo.nome" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <input type="number" class="form-control" placeholder="id" v-if="form !== 'editar'" v-model="modelo.marca" aria-label="Recipient's username" aria-describedby="button-addon2">
 
     <h5 class="labeling" v-if="form === 'deletar'">Numero do ID</h5>
-    <input type="text" v-if="form === 'deletar'" class="form-control" placeholder="ID" v-model="modelo.id" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <input type="number" v-if="form === 'deletar'" class="form-control" placeholder="ID" v-model="modelo.id" aria-label="Recipient's username" aria-describedby="button-addon2">
     <h5 class="labeling" v-if="form !== 'deletar'">Nome do Modelo</h5>
 
     <label class="form-label mt-3">Nome da Marca *</label>
@@ -27,7 +27,7 @@
     </select>
     <div class="input-group mb-3">     
       <input type="text" class="form-control" placeholder="nome" v-if="form !== 'deletar'" v-model="modelo.nome" aria-label="Recipient's username" aria-describedby="button-addon2">
-      <input type="number" class="form-control" placeholder="id" v-if="form !== 'deletar'" v-marca="marca" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <input type="number" class="form-control" placeholder="id" v-if="form !== 'deletar'" v-model="modelo.marca" aria-label="Recipient's username" aria-describedby="button-addon2">
      
       <button class="btn btn-outline-secondary" type="button" v-if="form === undefined" @click="onClickCadastrar()" id="button-addon2">Adicionar</button>
       <button class="btn btn-outline-secondary" type="button" v-if="form === 'editar'" @click="onClickEdit()" id="button-addon2">Editar</button>
