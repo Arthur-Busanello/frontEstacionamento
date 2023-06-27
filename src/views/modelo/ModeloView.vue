@@ -37,14 +37,14 @@
         </tr>
       </thead>
       <tbody class="table-group-divider">
-  <tr v-for="item in ModeloLista" :key="item.id">
+      <tr v-for="item in ModeloLista" :key="item.id">
     <th class="col-md-1">{{ item.id }}</th>
     <th class="col-md-2"> 
       <span v-if="item.ativo" class="badge text-bg-success"> Ativo </span>
       <span v-if="!item.ativo" class="badge text-bg-danger"> Inativo </span>
     </th>
     <th class="text-start">{{ item.nome }}</th>
-    <th class="text-start">{{ item.marca.nome }}</th>
+    <th class="text-start">{{ item.marca.id}}</th>
 
     <th class="col-md-2">
       <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -64,63 +64,110 @@
 
 
 </template>
+
 <script lang="ts">
-  import { defineComponent } from 'vue';
-  import ModeloClient from '@/client/ModeloClient';
-  import { Modelo } from '@/models/ModeloModel';
-  import { Marca } from '@/models/MarcaModel';
-import MarcaView from '../marca/MarcaView.vue';
+import ModeloClient from '@/client/ModeloClient';
+import { Modelo } from "@/models/ModeloModel";
+import { defineComponent } from 'vue';
 
-  export default defineComponent({
-    name: 'ModeloLista',
-    data() {
-      return {
-        ModeloLista: [] as Modelo[],
-      };
-    },
-    mounted() {
-      this.findAll();
-    },
-    methods: {
-      findAll() {
-        ModeloClient.listAll()
-        .then((success) => {
-  this.ModeloLista = success.map((item) => {
-    const modelo: Modelo = { ...item, getNomeMarca: () => item.marcaId.nome };
-    return modelo;
-  });
-})
+export default defineComponent({
+  name: "ModeloLista",
+  data() {
+    return {
+      ModeloLista: new Array<Modelo>()
 
-          .catch((error) => {
-            console.log(error);
-          });
-      },
-    },
-  });
+    }
+  },
+  mounted() {
+    this.findAll();
+  },
+  methods: {
+    findAll() {
+      ModeloClient.listAll()
+        .then(sucess => {
+          this.ModeloLista = sucess
+          console.log(sucess);
+        })
+        .catch(error => {
+          console.log(error);
+      });
+     
+    }
+  }
+});
+
 </script>
 
-
-
-
-<style>
-
-
-.container2{
+<style lang="css">
+.cad{
+color: aliceblue;
+text-decoration: none;
+font-weight: bold;
+}
+.tit{
 display: flex;
 justify-content: center;
-
 }
 .container{
+  margin-top: 20px;
+}
+.btn-options{
+  width: 800px;
+}
+.col-8{
 display: flex;
+align-items: center;
 justify-content: center;
-background-color: rgb(79, 86, 177);
-
-
 }
-h1{
+.put{
+  width: 750px;
+  height: 40px;
+}
+.op-btn{
+  margin-left: 10px;
+}
+.choose1{
+color: aliceblue;
+background-color: red;
+border:none;
+border-radius: 6px;
+font-weight: bold;
+height: 30px;
+transition: all 0.35s 0s;
+}
+.choose1:hover{
+font-size: larger;
+}
+.option{
+background-color: rgb(19, 6, 69);
+}
+.ayo{
+padding-top: 5px;
+color: aliceblue;
+}
+.op{
+height: 30px;
+width: 100px;
+border-radius: 5px;
+color: aliceblue;
+font-weight: bold;
+background-color: rgb(0, 45, 194);
+border: none;
+}
+.choose{
 color: black;
-
+border:none;
+border-radius: 6px;
+font-weight: bold;
+height: 30px;
+transition: all 0.35s 0s;
 }
-
-
-</style>@/models/ModeloModel
+.choose:hover{
+font-size: larger;
+}
+.enter{
+color: black;
+text-decoration: none;
+font-weight: bold;
+}
+</style>
