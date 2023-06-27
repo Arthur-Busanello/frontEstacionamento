@@ -23,25 +23,36 @@
   <table class="table table-bordered table-dark">
     <thead>
       <tr>
-        <th class="col-">Entrada</th>
-        <th class="col-">Veiculo</th>
-        <th class="col-">Condutor</th>
-      </tr>
-      <tr>
-        <th class="col-">Entrada</th>
-        <th class="col-">Veiculo</th>
-        <th class="col-">Condutor</th>
-      </tr>
+                <th scope="col-3">ID</th>
+                <th scope="col-3">Ativo</th>
+                <th scope="col-3" class="text-start">CPF</th>
+                <th scope="col-3" class="text-start">NOME</th>
+                <th scope="col-3" class="text-start">TELEFONE</th>
+                <th scope="col-3" class="text-start">TEMPO DESCONTO</th>
+                <th scope="col-3" class="text-start">TEMPO PAGO</th>
+                <th scope="col-3" class="text-start">OPCOES</th>
+        </tr>
     </thead>
     <tbody class="table-group-divider">
               
               <tr v-for="item in MovimentacaoLista" :key="item.id">
                 <th class="col-md-1">{{ item.id }}</th>
-                <th class="col-md-2"> 
+                <th class="col-md-1"> 
                   <span v-if="item.ativo" class="badge text-bg-success"> Ativo </span>
                   <span v-if="!item.ativo" class="badge text-bg-danger"> Inativo </span>
                 </th>
                 <th class="text-start">{{ item.ativo }}</th>
+                <th class="text-start col-md-1">{{ item.entrada }}</th>
+          <th class="text-start col-md-1">{{ item.saida }}</th>
+          <th class="text-start col-md-1">{{ item.tempo }}</th>
+          <th class="text-start col-md-1">{{ item.tempoDesconto }}</th>
+          <th class="text-start col-md-1">{{ item.tempoMulta }}</th>
+          <th class="text-start col-md-1">{{ item.valorDesconto }}</th>
+          <th class="text-start col-md-1">{{ item.valorHoraMulta }}</th>
+          <th class="text-start col-md-1">{{ item.valorMulta }}</th>
+          <th class="text-start col-md-1">{{ item.valorTotal }}</th>
+          <th class="text-start col-md-1">{{ item.condutorId }}</th>
+          <th class="text-start col-md-1">{{ item.veiculoId }}</th>
                 <th class="col-md-2">
                   <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                     <router-link type="button" class="btn btn-sm btn-warning" 
