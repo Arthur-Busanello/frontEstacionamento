@@ -1,15 +1,51 @@
 <template>
-    <h2>Cadastrar Veiculo</h2>
-    <hr>
-    <h5 class="labeling">Nome do Veiculo</h5>
-    <div class="input-group mb-3">
-    <input type="text" class="form-control" v-if="form === undefined" v-veiculo="veiculo.placa" placeholder="placa" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <!-- <input type="number" class="form-control" v-if="form === undefined" v-modelo="modelo" placeholder="id" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <input type="number" class="form-control" v-if="form === undefined" v-cor="cor" placeholder="cor" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <input type="number" class="form-control" v-if="form === undefined" v-tipo="tipo" placeholder="tipo" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <input type="number" class="form-control" v-if="form === undefined" v-ano="ano" placeholder="ano" aria-label="Recipient's username" aria-describedby="button-addon2"> -->
-    <button class="btn btn-outline-secondary" v-if="form === undefined" @click="onClickCadastrar()"  type="button" id="button-addon2">Adicionar</button>
-    <router-link to="/modelo"><button v-if="form === undefined" class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
+    
+  <h2 v-if="form === 'editar'">Editar Veiculo</h2>
+  <h2 v-if="form === undefined">Cadastrar Veiculo</h2>
+  <h2 v-if="form === 'deletar'">Deletar Veiculo</h2>
+  <hr>
+  <div v-if="mensagem.ativo" class="row">
+      <div class="col-md-12 text-start">
+        <div :class="mensagem.css" role="alert">
+          <strong>{{ mensagem.titulo }}</strong> {{ mensagem.mensagem }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+    <h5 v-if="form === 'editar'" class="labeling">ID do veiculo</h5>
+  <div class="input-group mb-3">
+    <input v-if="form === 'deletar'" v-model="veiculo.id" type="text" class="form-control" placeholder="ID do veiculo" aria-label="nome" aria-describedby="button-addon2" required>
+  </div>
+
+
+
+
+  <h5 v-if="form !== 'deletar'" class="labeling">Numero da placa</h5>
+  <div class="input-group mb-3">
+    <input v-if="form !== 'deletar'" v-model="veiculo.placa" type="text" class="form-control" placeholder="placa" aria-label="nome" aria-describedby="button-addon2" required>
+  </div>
+  <div class="lab">
+    <h5 v-if="form !== 'deletar'" class="labeling">Cor</h5>
+    <h5 v-if="form !== 'deletar'" class="labeling">Tipo</h5>
+  </div>
+  <div class="input-group mb-3">
+    <select v-if="form !== 'deletar'" v-model="veiculo.cor" class="form-select" aria-label="Default select example">
+      <option v-for="itemcolor in veiculocor" :value="itemcolor">{{itemcolor}}</option>
+    </select>
+    <select v-if="form !== 'deletar'" v-model="veiculo.tipo" class="form-select" aria-label="Default select example">
+      <option v-for="itemtype in veiculotipo" :value="itemtype">{{ itemtype }}</option>
+    </select>
+  </div>
+  
+  <div class="input-group mb-3">
+    <button class="btn btn-outline-secondary" type="button" v-if="form === undefined" @click="onClickCadastrar()"
+      id="button-addon2">Adicionar</button>
+    <button class="btn btn-outline-secondary" type="button" v-if="form === 'edit'" @click="onClickEditar()"
+      id="button-addon2">Editar</button>
+    <button class="btn btn-outline-secondary" type="button" v-if="form === 'deletar'" @click="onClickDeletar()"
+      id="button-addon2">Deletar</button>
+    <router-link to="/veiculo"><button class="btn btn-outline-secondary" type="button"
+        id="button-addon2">voltar</button></router-link>
   </div>
   </template>
   
@@ -17,6 +53,8 @@
   import VeiculoClient from '@/client/VeiculoClient';
 import { Modelo } from '@/models/ModeloModel';
   import { Veiculo } from '@/models/VeiculoModel';
+import { Cor } from '@/models/cor';
+import { Tipo } from '@/models/tipo';
   import { defineComponent } from 'vue';
   
   export default defineComponent({
@@ -30,7 +68,10 @@ import { Modelo } from '@/models/ModeloModel';
           mensagem: '',
           css: '',
         },
-      };
+        modelo: new Array<Modelo>(),
+      veiculotipo: Tipo,
+      veiculocor: Cor
+    }
     },
     computed: {
       id() {
@@ -91,7 +132,7 @@ import { Modelo } from '@/models/ModeloModel';
             this.mensagem.css = 'alert alert-danger alert-dismissible fade show';
           });
       },
-      onClickExcluir(){
+      onClickDeletar(){
         VeiculoClient.deletar(this.veiculo.id)
           .then(sucess => {
             this.veiculo = new Veiculo()

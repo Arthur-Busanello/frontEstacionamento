@@ -1,11 +1,30 @@
 <template>
-    <h2>Cadastrar Condutor</h2>
+    <h2 v-if="form === undefined">Cadastrar Condutor</h2>
+    <h2 v-if="form === 'deletar'">Deletar Condutor</h2>
+    <h2 v-if="form === 'editar'">Editar Condutor</h2>
     <hr>
-    <h5 class="labeling">Nome do Condutor</h5>
+    <div v-if="mensagem.ativo" class="row">
+      <div class="col-md-12 text-start">
+        <div :class="mensagem.css" role="alert">
+          <strong>{{ mensagem.titulo }}</strong> {{ mensagem.mensagem }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      </div>
+    </div>
+    <h5 class="labeling" v-if="form !== undefined">ID do Condutor</h5>
+    <input type="text" class="form-control" v-if="form === 'deletar'" v-model="condutor.id" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <input type="text" class="form-control" v-if="form === 'editar'" v-model="condutor.id" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <h5 class="labeling" v-if="form !== 'deletar'">Nome do Condutor</h5>
     <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="nome" aria-label="Recipient's username" aria-describedby="button-addon2">
-      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Adicionar</button>
-      <router-link to="/condutores"><button class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
+      <input type="text" class="form-control" v-if="form !== 'deletar'" placeholder="nome"  v-model="condutor.nome" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <input type="text" class="form-control" v-if="form !== 'deletar'" v-model="condutor.cpf" placeholder="CPF" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <input type="text" class="form-control" v-if="form !== 'deletar'" v-model="condutor.telefone" placeholder="Telefone" aria-label="Recipient's username" aria-describedby="button-addon2">
+    </div>
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary" v-if="form === undefined" @click="onClickCadastrar()" type="button" id="button-addon2">Adicionar</button>
+      <button class="btn btn-outline-secondary" v-if="form === 'editar'" type="button" @click="onClickEditar()" id="button-addon2">Editar</button>
+      <button class="btn btn-outline-secondary" v-if="form === 'deletar'" @click="onClickDeletar()" type="button" id="button-addon2">Deletar</button>
+      <router-link to="/condutor"><button class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
     </div>
   </template>
   
@@ -86,7 +105,7 @@ import  CondutorClient from '@/client/CondutorClient';
             this.mensagem.css = 'alert alert-danger alert-dismissible fade show';
           });
       },
-      onClickExcluir(){
+      onClickDeletar(){
         CondutorClient.deletar(this.condutor.id)
           .then(sucess => {
             this.condutor = new Condutor()

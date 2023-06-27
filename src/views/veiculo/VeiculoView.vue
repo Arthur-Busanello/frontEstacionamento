@@ -43,15 +43,12 @@
           <th class="text-start col-md-1">{{ item.ano }}</th>
           <th class="col-md-2">
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-              <router-link type="button" class="btn btn-sm btn-warning"
-                :to="{ name: 'veiculo-formulario-editar-view', query: { id: item.id, form: 'editar' } }">
-                Editar
-              </router-link>
-              <router-link type="button" class="btn btn-sm btn-danger"
-                :to="{ name: 'veiculo-formulario-excluir-view', query: { id: item.id, form: 'excluir' } }">
-                Excluir
-              </router-link>
-            </div>
+        <router-link type="button" class="btn btn-sm btn-warning"
+  :to="{ name: 'veiculo-formulario-editar-view', query: { id: item.id, form: 'editar' }, }">Editar</router-link>
+<router-link type="button" class="btn btn-sm btn-danger"
+  :to="{ name: 'veiculo-formulario-excluir-view',query: { id: item.id, form: 'deletar' },}">Excluir</router-link>
+
+      </div>
           </th>
         </tr>
       </tbody>
