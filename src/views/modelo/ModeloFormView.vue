@@ -1,30 +1,21 @@
 <template>
-  <h2>Cadastrar Modelo</h2>
 <h2 v-if="form === 'editar'">Editar Modelo</h2>
     <h2 v-if="form === undefined">Cadastrar Modelo</h2>
     <h2 v-if="form === 'deletar'">Deletar Modelo</h2>
     <hr>
-    <div v-if="mensagem.active" class="row">
-      <div class="col-md-12 text-start">
-        <div :class="mensagem.css" role="alert">
-          <strong>{{ mensagem.titulo }}</strong> {{ mensagem.mensagem }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-      </div>
-    </div>
+    
     
     <h5 class="labeling" v-if="form === 'editar'">Numero do modelo</h5>
   <input type="text" v-if="form === 'editar'" v-model="modelo.nome" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <input type="number" class="form-control" placeholder="id" v-if="form !== 'editar'" v-model="modelo.marca" aria-label="Recipient's username" aria-describedby="button-addon2">
+  
 
     <h5 class="labeling" v-if="form === 'deletar'">Numero do ID</h5>
     <input type="number" v-if="form === 'deletar'" class="form-control" placeholder="ID" v-model="modelo.id" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <h5 class="labeling" v-if="form !== 'deletar'">Nome do Modelo</h5>
+   
 
-    <label class="form-label mt-3">Nome da Marca *</label>
-    <select v-if="form !== 'deletar'" v-model="modelo.marca" class="form-select" >
-      <option v-for="item in marca" :value="item"> {{ item.id }} {{ item.id }}</option>
-    </select>
+  
+    <h5 class="labeling" v-if="form !== 'deletar'">Novo Modelo</h5>
+    <label class="form-label mt-3">id da Marca </label>
     <div class="input-group mb-3">     
       <input type="text" class="form-control" placeholder="nome" v-if="form !== 'deletar'" v-model="modelo.nome" aria-label="Recipient's username" aria-describedby="button-addon2">
       <input type="number" class="form-control" placeholder="id" v-if="form !== 'deletar'" v-model="modelo.marca" aria-label="Recipient's username" aria-describedby="button-addon2">
