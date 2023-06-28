@@ -2,12 +2,12 @@
 <h2 v-if="form === 'editar'">Editar Modelo</h2>
     <h2 v-if="form === undefined">Cadastrar Modelo</h2>
     <h2 v-if="form === 'deletar'">Deletar Modelo</h2>
-    <hr>
+    
     
     
     <h5 class="labeling" v-if="form === 'editar'">Numero do modelo</h5>
   <input type="text" v-if="form === 'editar'" v-model="modelo.nome" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
-  
+  <input type="number" v-if="form === 'editar'" v-model="modelo.marca" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
 
     <h5 class="labeling" v-if="form === 'deletar'">Numero do ID</h5>
     <input type="number" v-if="form === 'deletar'" class="form-control" placeholder="ID" v-model="modelo.id" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -15,7 +15,8 @@
 
   
     <h5 class="labeling" v-if="form !== 'deletar'">Novo Modelo</h5>
-    <label class="form-label mt-3">id da Marca </label>
+    <label class="form-label mt-3">ID Marca </label>
+
     <div class="input-group mb-3">     
       <input type="text" class="form-control" placeholder="nome" v-if="form !== 'deletar'" v-model="modelo.nome" aria-label="Recipient's username" aria-describedby="button-addon2">
       <input type="number" class="form-control" placeholder="id" v-if="form !== 'deletar'" v-model="modelo.marca" aria-label="Recipient's username" aria-describedby="button-addon2">

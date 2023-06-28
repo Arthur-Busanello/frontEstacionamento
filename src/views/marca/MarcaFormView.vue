@@ -1,5 +1,5 @@
 <template>
-  <h2>Cadastrar Marca</h2>
+
 
     <h2 v-if="form === 'edit'">Editar Marca</h2>
     <h2 v-if="form === undefined">Cadastrar Marca</h2>
