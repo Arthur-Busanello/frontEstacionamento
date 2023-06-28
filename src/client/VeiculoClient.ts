@@ -44,7 +44,7 @@ import { Veiculo } from "@/models/VeiculoModel";
 
     public async cadastrar(veiculo : Veiculo) : Promise<string> {
         try {
-            return (await this.axiosClient.post<string>(``, veiculo)).data
+            return (await this.axiosClient.post<string>(`/create`, veiculo)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
@@ -53,7 +53,7 @@ import { Veiculo } from "@/models/VeiculoModel";
 
     public async editar(id: number, veiculo : Veiculo) : Promise<string> {
         try {
-            return (await this.axiosClient.put<string>(`/${id}`, veiculo)).data
+            return (await this.axiosClient.put<string>(`/edit/${id}`, veiculo)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
@@ -61,7 +61,7 @@ import { Veiculo } from "@/models/VeiculoModel";
 
     public async deletar(id: number) : Promise<string> {
         try {
-            return (await this.axiosClient.delete<string>(`/${id}`)).data
+            return (await this.axiosClient.delete<string>(`/delete/${id}`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }

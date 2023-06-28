@@ -41,7 +41,7 @@ class CondutorClient {
 
     public async cadastrar(condutor : Condutor) : Promise<string> {
         try {
-            return (await this.axiosClient.post<string>(``, condutor)).data
+            return (await this.axiosClient.post<string>(`/create`, condutor)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
@@ -50,7 +50,7 @@ class CondutorClient {
 
     public async editar(id: number, condutor : Condutor) : Promise<string> {
         try {
-            return (await this.axiosClient.put<string>(`/${id}`, condutor)).data
+            return (await this.axiosClient.put<string>(`/edit/${id}`, condutor)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
@@ -58,7 +58,7 @@ class CondutorClient {
 
     public async deletar(id: number) : Promise<string> {
         try {
-            return (await this.axiosClient.delete<string>(`/${id}`)).data
+            return (await this.axiosClient.delete<string>(`/delete/${id}`)).data
         } catch (error : any) {
             return Promise.reject(error.response)
         }
