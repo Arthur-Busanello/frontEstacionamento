@@ -12,13 +12,7 @@
         </div>
       </div>
     </div>
-    <h5 v-if="form === 'editar'" class="labeling">ID do veiculo</h5>
-  <div class="input-group mb-3">
-    <input v-if="form === 'deletar'" v-model="veiculo.id" type="text" class="form-control" placeholder="ID do veiculo" aria-label="nome" aria-describedby="button-addon2" required>
-  </div>
-
-
-
+    
 
   <h5 v-if="form !== 'deletar'" class="labeling">Numero da placa</h5>
   <div class="input-group mb-3">
@@ -28,6 +22,10 @@
     <h5 v-if="form !== 'deletar'" class="labeling">Cor</h5>
     <h5 v-if="form !== 'deletar'" class="labeling">Tipo</h5>
   </div>
+
+
+
+  
   <div class="input-group mb-3">
     <select v-if="form !== 'deletar'" v-model="veiculo.cor" class="form-select" aria-label="Default select example">
       <option v-for="itemcolor in veiculocor" :value="itemcolor">{{itemcolor}}</option>
@@ -162,6 +160,10 @@ import { Tipo } from '@/models/tipo';
   }
   .platform{
     border: 1px transparent black;
+  }
+  .lab{
+    display: flex;
+    justify-content: space-around;
   }
   </style>
   
