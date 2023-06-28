@@ -11,15 +11,21 @@
       </div>
     </div>
   </div>
-  <h5 class="labeling" v-if="form !== undefined">ID do Cliente</h5>
-  <input type="text" class="form-control" v-if="form === 'deletar'" v-model="condutor.id" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <input type="text" class="form-control" v-if="form === 'editar'" v-model="condutor.id" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
-  <h5 class="labeling" v-if="form !== 'deletar'">Nome do cliente</h5>
-  <div class="input-group mb-3">
-    <input type="text" class="form-control" v-if="form !== 'deletar'" placeholder="nome" v-model="condutor.nome" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <input type="text" class="form-control" v-if="form !== 'deletar'" v-model="condutor.cpf" placeholder="CPF" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <input type="text" class="form-control" v-if="form !== 'deletar'" v-model="condutor.telefone" placeholder="Telefone" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <div class="row">
+    <div class="col-md-12 text-start">
+      <label class="form-label mt-3">Nome do Condutor *</label>
+      <input type="text" :disabled="form === 'deletar' || disabled" class="form-control" v-model="condutor.nome">
+    </div>
+    <div class="col-md-12 text-start">
+      <label class="form-label mt-3">Cpf do Condutor *</label>
+      <input type="text" :disabled="form === 'deletar' || disabled" class="form-control" placeholder="121.121.121-12" v-model="condutor.cpf">
+    </div>
+    <div class="col-md-12 text-start">
+      <label class="form-label mt-3">Telefone do Condutor *</label>
+      <input type="text" :disabled="form === 'deletar' || disabled" class="form-control" placeholder="(12)12121-1212" v-model="condutor.telefone">
+    </div>
   </div>
+
   <div class="input-group mb-3">
     <button class="btn btn-outline-secondary" v-if="form === undefined" @click="onClickCadastrar()" type="button" id="button-addon2">Adicionar</button>
     <button class="btn btn-outline-secondary" v-if="form === 'editar'" type="button" @click="onClickEditar()" id="button-addon2">Editar</button>
@@ -44,6 +50,7 @@ export default defineComponent({
         mensagem: '',
         css: '',
       },
+      disabled: false,
     };
   },
   computed: {
