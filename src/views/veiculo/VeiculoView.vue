@@ -38,8 +38,8 @@
           </th>
           <th class="text-start col-md-1">{{ item.placa }}</th>
           <th class="text-start col-md-1">{{ item.modelo.id }}</th>
-          <th class="text-start col-md-1">{{ item.cor }}</th>
           <th class="text-start col-md-1">{{ item.tipo }}</th>
+          <th class="text-start col-md-1">{{ item.cor }}</th>
           <th class="text-start col-md-1">{{ item.ano }}</th>
           <th class="col-md-2">
             <div class="btn-group" role="group" aria-label="Basic mixed styles example">

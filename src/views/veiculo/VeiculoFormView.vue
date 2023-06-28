@@ -18,12 +18,20 @@
   <div class="input-group mb-3">
     <input v-if="form !== 'deletar'" v-model="veiculo.placa" type="text" class="form-control" placeholder="placa" aria-label="nome" aria-describedby="button-addon2" required>
   </div>
+  <h5 v-if="form !== 'deletar'" class="labeling">ano do veiculo</h5>
+  <div class="input-group mb-3">
+    <input v-if="form !== 'deletar'" v-model="veiculo.ano" type="text" class="form-control" placeholder="ano" aria-label="ano" aria-describedby="button-addon2" required>
+  </div>
   <div class="lab">
     <h5 v-if="form !== 'deletar'" class="labeling">Cor</h5>
+   
     <h5 v-if="form !== 'deletar'" class="labeling">Tipo</h5>
-    <h5 v-if="form !== 'deletar'" class="labeling">Ano</h5>
+    
     <h5 v-if="form !== 'deletar'" class="labeling">Modelo</h5>
+
+  
   </div>
+ 
 
 
 
@@ -37,8 +45,7 @@
     </select>
   
    
-                <input type="text" :disabled = "this.form === 'deletar' ? '' : disabled" class="form-control"
-                    v-model="veiculo.ano">
+  
      
       <select v-model="veiculo.modelo" class="form-select">
                     <option v-for="item in modelo" :value="item"> {{ item.nome }}</option>
@@ -72,16 +79,17 @@
     data() {
       return {
         veiculo: new Veiculo(),
+        modelo: new Array<Modelo>(),
         mensagem: {
           ativo: false,
           titulo: '',
           mensagem: '',
           css: '',
         },
-        modelo: new Array<Modelo>(),
+       
       veiculotipo: Tipo,
       veiculocor: Cor,
-      veiculoano: Number
+      
     }
     },
     computed: {
@@ -96,10 +104,23 @@
       if (this.id !== undefined) {
         this.findById(Number(this.id));
       }
+      this.listaAllModelo()
     },
     methods: {
-      findAll() {
-      ModeloClient.listAll()
+      findById(id: number) {
+            VeiculoClient.findById(id)
+                .then(sucess => {
+                    this.veiculo = sucess
+                })
+                .catch(error => {
+                    this.mensagem.ativo = true;
+                    this.mensagem.mensagem = error;
+                    this.mensagem.titulo = "Error. ";
+                    this.mensagem.css = "alert alert-danger alert-dismissible fade show";
+                });
+        },
+        listaAllModelo() {
+        ModeloClient.listAll()
         .then(sucess =>{
           this.modelo = sucess;
         })
@@ -123,18 +144,7 @@
             this.mensagem.css = 'alert alert-danger alert-dismissible fade show';
           });
       },
-      findById(id: number) {
-        VeiculoClient.findById(id)
-          .then((sucess: Veiculo) => {
-            this.veiculo = sucess;
-          })
-          .catch((error: string) => {
-            this.mensagem.ativo = true;
-            this.mensagem.mensagem = error;
-            this.mensagem.titulo = 'Error.';
-            this.mensagem.css = 'alert alert-danger alert-dismissible fade show';
-          });
-      },
+    
       onClickEditar(){
         VeiculoClient.editar(this.veiculo.id, this.veiculo)
           .then(sucess => {
