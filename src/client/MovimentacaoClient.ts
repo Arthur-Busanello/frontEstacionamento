@@ -30,7 +30,13 @@ import { PageResponse } from "@/models/pages/page-response";
             return Promise.reject(error.response)
         }
     }
-
+    public async findByAbertas() : Promise<Movimentacao[]> {
+        try {
+            return (await this.axiosClient.get<Movimentacao[]>(`/abertas`)).data
+        } catch (error : any) {
+            return Promise.reject(error.response)
+        }
+    }
 
     public async cadastrar(movimentacao: Movimentacao): Promise<string> {
         try {
