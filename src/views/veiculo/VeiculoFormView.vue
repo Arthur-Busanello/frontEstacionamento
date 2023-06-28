@@ -21,6 +21,8 @@
   <div class="lab">
     <h5 v-if="form !== 'deletar'" class="labeling">Cor</h5>
     <h5 v-if="form !== 'deletar'" class="labeling">Tipo</h5>
+    <h5 v-if="form !== 'deletar'" class="labeling">Ano</h5>
+    <h5 v-if="form !== 'deletar'" class="labeling">Modelo</h5>
   </div>
 
 
@@ -33,6 +35,14 @@
     <select v-if="form !== 'deletar'" v-model="veiculo.tipo" class="form-select" aria-label="Default select example">
       <option v-for="itemtype in veiculotipo" :value="itemtype">{{ itemtype }}</option>
     </select>
+  
+   
+                <input type="text" :disabled = "this.form === 'deletar' ? '' : disabled" class="form-control"
+                    v-model="veiculo.ano">
+     
+      <select v-model="veiculo.modelo" class="form-select">
+                    <option v-for="item in modelo" :value="item"> {{ item.nome }}</option>
+                </select>
   </div>
   
   <div class="input-group mb-3">
@@ -48,12 +58,14 @@
   </template>
   
   <script lang="ts">
+  import ModeloClient from '@/client/ModeloClient';
   import VeiculoClient from '@/client/VeiculoClient';
-import { Modelo } from '@/models/ModeloModel';
+  import { Modelo } from '@/models/ModeloModel';
   import { Veiculo } from '@/models/VeiculoModel';
-import { Cor } from '@/models/cor';
-import { Tipo } from '@/models/tipo';
+  import { Cor } from '@/models/cor';
+  import { Tipo } from '@/models/tipo';
   import { defineComponent } from 'vue';
+  
   
   export default defineComponent({
     name: 'VeiculoFormulario',
@@ -68,7 +80,8 @@ import { Tipo } from '@/models/tipo';
         },
         modelo: new Array<Modelo>(),
       veiculotipo: Tipo,
-      veiculocor: Cor
+      veiculocor: Cor,
+      veiculoano: Number
     }
     },
     computed: {
@@ -85,6 +98,15 @@ import { Tipo } from '@/models/tipo';
       }
     },
     methods: {
+      findAll() {
+      ModeloClient.listAll()
+        .then(sucess =>{
+          this.modelo = sucess;
+        })
+        .catch(Error =>{
+          console.log(Error);
+        })
+    },
       onClickCadastrar() {
         VeiculoClient.cadastrar(this.veiculo)
         .then(sucess => {
