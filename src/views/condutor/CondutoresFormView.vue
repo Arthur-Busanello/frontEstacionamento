@@ -11,20 +11,24 @@
         </div>
       </div>
     </div>
-    <h5 class="labeling" v-if="form !== undefined">ID do Condutor</h5>
-    <input type="text" class="form-control" v-if="form === 'deletar'" v-condutor="condutor.id" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <input type="text" class="form-control" v-if="form === 'editar'" v-condutor="condutor.nome" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
-    <h5 class="labeling" v-if="form !== 'deletar'">Nome do Condutor</h5>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" v-if="form !== 'deletar'" placeholder="nome"  v-condutor="condutor.nome" aria-label="Recipient's username" aria-describedby="button-addon2">
-      <input type="text" class="form-control" v-if="form !== 'deletar'" v-condutor="condutor.cpf" placeholder="CPF" aria-label="Recipient's username" aria-describedby="button-addon2">
-      <input type="text" class="form-control" v-if="form !== 'deletar'" v-condutor="condutor.telefone" placeholder="Telefone" aria-label="Recipient's username" aria-describedby="button-addon2">
-    </div>
-    <div class="input-group mb-3">
-      
-      <button class="btn btn-outline-secondary" v-if="form === undefined" @click="onClickCadastrar()" type="button" id="button-addon2">Adicionar</button>
-      <button class="btn btn-outline-secondary" v-if="form === 'editar'" type="button" @click="onClickEditar()" id="button-addon2">Editar</button>
-      <button class="btn btn-outline-secondary" v-if="form === 'deletar'" @click="onClickDeletar()" type="button" id="button-addon2">Deletar</button>
+    <h5 class="labeling" v-if="form === 'editar'">Nome do condutor</h5>
+  <input type="text" v-if="form === 'editar'" v-condutor="condutor.nome" class="form-control" placeholder="ID" aria-label="Recipient's username" aria-describedby="button-addon2">
+  <input type="number" class="form-control" placeholder="id" v-if="form !== 'editar'" v-condutor="condutor.nome" aria-label="Recipient's username" aria-describedby="button-addon2">
+
+    <h5 class="labeling" v-if="form === 'deletar'">CPF</h5>
+    <input type="number" v-if="form === 'deletar'" class="form-control" placeholder="ID" v-condutor="condutor.id" aria-label="Recipient's username" aria-describedby="button-addon2">
+    <h5 class="labeling" v-if="form !== 'deletar'">Nome do Modelo</h5>
+
+    <label class="form-label mt-3">Nome da Marca *</label>
+    <select v-if="form !== 'deletar'" v-condutor="condutor.nome" class="form-select" >
+    </select>
+    <div class="input-group mb-3">     
+      <input type="text" class="form-control" placeholder="nome" v-if="form !== 'deletar'" v-condutor="condutor.nome" aria-label="Recipient's username" aria-describedby="button-addon2">
+      <input type="number" class="form-control" placeholder="id" v-if="form !== 'deletar'" v-condutor="condutor.cpf" aria-label="Recipient's username" aria-describedby="button-addon2">
+     
+      <button class="btn btn-outline-secondary" type="button" v-if="form === undefined" @click="onClickCadastrar()" id="button-addon2">Adicionar</button>
+      <button class="btn btn-outline-secondary" type="button" v-if="form === 'editar'" @click="onClickEditar()" id="button-addon2">Editar</button>
+      <button class="btn btn-outline-secondary" type="button" v-if="form === 'deletar'" @click="onClickDeletar()" id="button-addon2">Deletar</button>
       <router-link to="/condutores"><button class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
     </div>
   </template>
