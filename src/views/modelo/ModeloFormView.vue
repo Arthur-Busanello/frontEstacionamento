@@ -30,7 +30,7 @@
       <input type="number" class="form-control" placeholder="id" v-if="form !== 'deletar'" v-model="modelo.marca" aria-label="Recipient's username" aria-describedby="button-addon2">
      
       <button class="btn btn-outline-secondary" type="button" v-if="form === undefined" @click="onClickCadastrar()" id="button-addon2">Adicionar</button>
-      <button class="btn btn-outline-secondary" type="button" v-if="form === 'editar'" @click="onClickEdit()" id="button-addon2">Editar</button>
+      <button class="btn btn-outline-secondary" type="button" v-if="form === 'editar'" @click="onClickEditar()" id="button-addon2">Editar</button>
       <button class="btn btn-outline-secondary" type="button" v-if="form === 'deletar'" @click="onClickDeletar()" id="button-addon2">Deletar</button>
       <router-link to="/modelo"><button class="btn btn-outline-secondary" type="button" id="button-addon2">voltar</button></router-link>
     </div>
@@ -117,7 +117,7 @@ export default defineComponent({
         this.mensagem.css = "alert alert-danger alert-dismissible fade show";
       });
     },
-    onClickEdit() {
+    onClickEditar() {
       ModeloClient.editar(this.modelo.id, this.modelo)
         .then(sucess => {
           this.modelo = new Modelo()

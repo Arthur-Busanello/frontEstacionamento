@@ -40,7 +40,7 @@
   <div class="input-group mb-3">
     <button class="btn btn-outline-secondary" type="button" v-if="form === undefined" @click="onClickCadastrar()"
       id="button-addon2">Adicionar</button>
-    <button class="btn btn-outline-secondary" type="button" v-if="form === 'edit'" @click="onClickEditar()"
+    <button class="btn btn-outline-secondary" type="button" v-if="form === 'editar'" @click="onClickEditar()"
       id="button-addon2">Editar</button>
     <button class="btn btn-outline-secondary" type="button" v-if="form === 'deletar'" @click="onClickDeletar()"
       id="button-addon2">Deletar</button>
@@ -165,4 +165,3 @@ import { Tipo } from '@/models/tipo';
   }
   </style>
   
-  @/client/CondutorClient@/models/Condutor@/models/CondutorModel

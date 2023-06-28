@@ -55,7 +55,7 @@
                       Editar 
                     </router-link>
                     <router-link type="button" class="btn btn-sm btn-danger" 
-                        :to="{ name: 'condutores-formulario-excluir-view', query: { id: item.id, form: 'excluir' } } ">
+                        :to="{ name: 'condutores-formulario-excluir-view', query: { id: item.id, form: 'deletar' } } ">
                       Excluir
                     </router-link>
                   </div>
