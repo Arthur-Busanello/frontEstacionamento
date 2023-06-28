@@ -1,7 +1,5 @@
 <template>
 
-
-
 <div class="container text-center">
     <div class="row">
       <h1>Lista de Condutores</h1>
